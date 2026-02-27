@@ -1,13 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-import ChildA from './Component/ChildA';
+import "./App.css";
+import ChildA from "./Component/ChildA";
+import { createContext, useState } from "react";
+const UserContext = createContext();
 
 function App() {
+  const [user, setUser] = useState({ fname: "Yuvraj", lname: "Kushawaha" });
+
   return (
     <div className="App">
-      <ChildA />
+      <UserContext.Provider value={user}>
+        <ChildA />
+      </UserContext.Provider>
     </div>
   );
 }
 
 export default App;
+export {UserContext};
